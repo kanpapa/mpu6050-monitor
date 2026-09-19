@@ -1,0 +1,55 @@
+/* Add your custom styles here */
+
+/* ── 3D姿勢表示 ─────────────────────────────────────────── */
+.scene3d {
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 700px;
+}
+
+.board3d {
+  position: relative;
+  width: 160px;
+  height: 90px;
+  transform-style: preserve-3d;
+  transition: transform 0.08s linear; /* imu_updateの間隔(約100ms)に合わせて滑らかに */
+  transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+}
+
+.board3d .face {
+  position: absolute;
+  width: 160px;
+  height: 90px;
+  background: linear-gradient(145deg, #1c3a52, #14293b);
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  box-shadow: 0 0 18px rgba(79, 163, 224, 0.25) inset;
+}
+
+/* 板の厚みを表現する側面（薄い箱として立体感を出す） */
+.board3d .top    { transform: translateZ(6px); }
+.board3d .bottom { transform: translateZ(-6px) rotateY(180deg); background: #0d1621; }
+.board3d .front  { width: 160px; height: 12px; top: 39px; transform: rotateX(90deg) translateZ(6px); background: #0d1621; }
+.board3d .back   { width: 160px; height: 12px; top: 39px; transform: rotateX(90deg) translateZ(-84px); background: #0d1621; }
+.board3d .left   { width: 12px; height: 90px; left: -6px; transform: rotateY(90deg) translateZ(6px); background: #0d1621; }
+.board3d .right  { width: 12px; height: 90px; left: 154px; transform: rotateY(90deg) translateZ(6px); background: #0d1621; }
+
+.board-label {
+  position: absolute;
+  top: 8px; left: 0; right: 0;
+  text-align: center;
+  font-size: 0.7rem;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+}
+
+.board-nose {
+  position: absolute;
+  bottom: 8px; left: 0; right: 0;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent);
+}

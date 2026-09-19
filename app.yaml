@@ -1,0 +1,6 @@
+name: mpu6050-monitor
+description: ""
+ports: []
+bricks:
+- arduino:web_ui: {}
+icon: 😀
